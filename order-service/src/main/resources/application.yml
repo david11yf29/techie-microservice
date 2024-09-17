@@ -4,14 +4,19 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3307/order-service
+    url: jdbc:mysql://localhost:3308/order-service
     username: root
     password: 123456
   jpa:
     hibernate:
-      ddl-auto: update
-#    database-platform: org.hibernate.dialect.MySQLDialect
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
     generate-ddl: true
+
+    #update：表示自动根据model对象来更新表结构，启动hibernate时会自动检查数据库，如果缺少表，则自动建表；如果表里缺少列，则自动添加列。
+    #create：启动hibernate时，自动删除原来的表，新建所有的表，所以每次启动后的以前数据都会丢失。
+    #create-drop：启动hibernate时，自动创建表，程序关闭时，自动把相应的表都删除。所以程序结束时，表和数据也不会再存在。
+
 
 server:
   port: 8082
