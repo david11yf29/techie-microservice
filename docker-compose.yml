@@ -4,6 +4,8 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    networks:
+      - spring-boot-network
     volumes:
       - mongo:/data
     environment:
@@ -16,6 +18,8 @@ services:
     restart: unless-stopped
     ports:
       - "8081:8081"
+    networks:
+      - spring-boot-network
     depends_on:
       - mongodb
     environment:
@@ -24,5 +28,24 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
       - ME_CONFIG_BASICAUTH=false
 
+  db_mysql:
+    image: mysql:latest
+    container_name: techie_mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - spring-boot-network
+    environment:
+      - MYSQL_DATABASE=order-service
+      - MYSQL_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+      - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
+#      - .data:/var/lib/mysql
+
 volumes:
   mongo:
+
+networks:
+  spring-boot-network:
+    driver: bridge
