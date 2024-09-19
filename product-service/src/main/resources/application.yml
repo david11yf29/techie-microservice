@@ -13,5 +13,12 @@ eureka:
   instance:
     hostname: localhost
 
+#Actuator Prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+
 server:
   port: 0

@@ -9,5 +9,12 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 
+#Actuator Prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+
 server:
   port: 8761

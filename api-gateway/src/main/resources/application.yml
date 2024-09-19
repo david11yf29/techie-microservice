@@ -47,3 +47,9 @@ logging:
     org.springframework.cloud.gateway: TRACE
 #    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
 
+#Actuator Prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
