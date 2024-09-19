@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 public class InventoryServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(InventoryServiceApplication.class, args);
+		SpringApplication.run(InventoryServiceApplication.class, "--debug=true");
 	}
 
 	@Bean

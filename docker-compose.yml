@@ -80,6 +80,12 @@ services:
     networks:
       - spring-boot-network
 
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: techie_zipkin
+    ports:
+      - "9411:9411"
+
 volumes:
   mongo:
 
