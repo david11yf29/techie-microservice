@@ -74,6 +74,8 @@ services:
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: root
       KEYCLOAK_ADMIN_PASSWORD: 123456
+    volumes:
+      - keycloak:/opt/keycloak/data/
     ports:
       - "8181:8080"
     restart: always
@@ -111,6 +113,7 @@ services:
 
 volumes:
   mongo:
+  keycloak:
 
 networks:
   spring-boot-network:
